@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types"
-import { formatDate } from '../../src/api/utils';
+import { formatDate } from '../api/utils';
 import Tooltip from '@material-ui/core/Tooltip';
 import './DataTable.css';
 import {colorCode,DEFAULT_COLOR} from '../../src/api/constants';
