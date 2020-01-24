@@ -79,7 +79,6 @@ DataTable.ptropTypes = {
     heading: PropTypes.array,
     requestData: PropTypes.array,
     onDelete: PropTypes.func,
-    onUpdate: PropTypes.func,
     filterList: PropTypes.array,
     onStatusUpdate: PropTypes.func
 };
