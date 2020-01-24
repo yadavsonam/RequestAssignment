@@ -1,5 +1,5 @@
 export const colorCode = {
-    Pending: '##F3F5D9',
+    Pending: '#F3F5D9',
     Approved: '#C5F8A8',
     Denied: '#D4C5C2'
 }

@@ -1,16 +1,17 @@
 import React from 'react';
 import PropTypes from "prop-types"
-import { formatDate } from '../api/utils';
 import Tooltip from '@material-ui/core/Tooltip';
 import './DataTable.css';
+
+import { formatDate } from '../../src/api/utils';
 import {colorCode,DEFAULT_COLOR} from '../../src/api/constants';
 
 const StatusContent = (props) => {
-    let dataItem = props.dataItem
-    let excludeStatus = dataItem.status
-    let list = props.filterList
+    let dataItem = props.dataItem;
+    let excludeStatus = dataItem.status;
+    let list = props.filterList;
 
-    let nList = list.filter(item => item !== excludeStatus)
+    let nList = list.filter(item => item !== excludeStatus);
 
     let listItems = nList.map((item,i) => <div key={i} onClick={() => props.onStatusUpdate(dataItem,item)}>{item}</div>);
     return (
@@ -18,7 +19,7 @@ const StatusContent = (props) => {
             {listItems}
         </div>
     )
-}
+};
 
 class DataTable extends React.Component{
     getColor = (status) => {
@@ -26,7 +27,7 @@ class DataTable extends React.Component{
             return colorCode[status];
         }
         return DEFAULT_COLOR;
-    }
+    };
 
     render() {
         let props = this.props;
@@ -74,12 +75,10 @@ class DataTable extends React.Component{
     }
 }
 
-
-DataTable.ptropTypes = {
+DataTable.propTypes = {
     heading: PropTypes.array,
     requestData: PropTypes.array,
     onDelete: PropTypes.func,
-    onUpdate: PropTypes.func,
     filterList: PropTypes.array,
     onStatusUpdate: PropTypes.func
 };

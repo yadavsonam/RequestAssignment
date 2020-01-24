@@ -1,5 +1,5 @@
 import React from 'react';
-import AppContainer from './container/AppContainer';
+import AppContainer from '../src/container/AppContainer';
 
 function App() {
   return (

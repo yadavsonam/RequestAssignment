@@ -5,7 +5,8 @@ import './appContainer.css';
 import CustomFilter from '../component/CustomFilter';
 import DataTable from '../component/DataTable';
 
-import fetchDataAction, {setFilterAction, sortData, deleteDataAction, updateStatusAction} from "../action/dataAction";
+import fetchDataAction, {setFilterAction, deleteDataAction, updateStatusAction} from "../action/dataAction";
+import {sortData} from "../api/utils";
 
 const filterList = [
     'Approved',
@@ -72,7 +73,7 @@ function mapStateToProps(state) {
     }
 
     /*Sort Data*/
-    let finalData = sortData(r_data)
+    let finalData = sortData(r_data);
 
     /*Return Final Data*/
     return {
@@ -85,7 +86,7 @@ function mapDispatchToProps(dispatch) {
     return {
         getData: fetchDataAction(dispatch),
         filterData: setFilterAction(dispatch),
-        deleteData:deleteDataAction(dispatch),
+        deleteData: deleteDataAction(dispatch),
         updateStatus: updateStatusAction(dispatch)
     }
 }

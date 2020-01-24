@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from "prop-types"
-
 import './CustomFilter.css';
+
 class CustomFilter extends React.Component{
     onSelectChange = (e) => {
         this.props.onSelectChange(e.target.value);

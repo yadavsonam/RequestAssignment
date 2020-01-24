@@ -1,19 +1,5 @@
 import {getRequests} from "../API";
-
-export function sortData(data){
-    data.sort(function(a,b){
-        return new Date(b.updated_at) - new Date(a.updated_at);
-    });
-    return data;
-}
-
-//To Remove
-/*function getData(payload){
-    return {
-        type:"getData",
-        payload
-    };
-}*/
+import {sortData} from "../api/utils";
 
 export function setData(requestData){
     return {
@@ -25,29 +11,27 @@ export function setData(requestData){
 }
 
 const fetchReqData = async (dispatch, param) => {
-    //To Remove
-    //dispatch(getData());
     await getRequests(param).then(response => {
         response = sortData(response);
         dispatch(setData(response))
     })
 };
+const fetchDataAction = (dispatch, param) => {
+    return () => fetchReqData(dispatch);
+};
+export default fetchDataAction;
 
 const setFilter = (dispatch, filterValue) => {
-
     return dispatch({
         type: "filterData",
         payload:{
             filterValue
         }
     });
-}
-
+};
 export const setFilterAction = (dispatch) => {
     return (filterValue) => setFilter(dispatch, filterValue)
-}
-
-
+};
 
 const deleteData = (dispatch, dataItem) => {
     return dispatch({
@@ -56,28 +40,11 @@ const deleteData = (dispatch, dataItem) => {
             dataItem
         }
     });
-}
-
+};
 export const deleteDataAction = (dispatch) => {
     return (dataItem) => deleteData(dispatch, dataItem)
-}
-
-
-const fetchDataAction = (dispatch, param) => {
-    return () => fetchReqData(dispatch);
 };
-export default fetchDataAction;
 
-// export function fetchData(dispatch, param) {
-//     //
-//     getRequests(param).then(response => {
-//         //Set data action call
-//         console.log(response)
-//         dispatch(setData(response))
-//     })
-//
-//     return dispatch(getData(param))
-// }
 
 const updateStatusData = (dispatch, dataItem,status) => {
     return dispatch({
@@ -87,8 +54,7 @@ const updateStatusData = (dispatch, dataItem,status) => {
             status
         }
     });
-}
-
+};
 export const updateStatusAction = (dispatch) => {
     return (dataItem,status) => updateStatusData(dispatch, dataItem,status)
-}
+};

@@ -1,3 +1,5 @@
+import {getNow} from "../api/utils";
+
 export default (state={filterValue:'All', requestData:[]},action) => {
 
     if (action.type === "setData") {
@@ -21,14 +23,7 @@ export default (state={filterValue:'All', requestData:[]},action) => {
         let finalData = nData.map((item) => {
             if(item.id === dataItem.id){
                 item.status = status;
-                let nDate = new Date();
-                let dateTime =  nDate.getFullYear() + "-"
-                    + (nDate.getMonth()+1)  + "-"
-                    + nDate.getDate() + " "
-                    + nDate.getHours() + ":"
-                    + nDate.getMinutes() + ":"
-                    + nDate.getSeconds();
-                item.updated_at = dateTime;
+                item.updated_at = getNow();
             }
             return item;
         });
