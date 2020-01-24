@@ -75,7 +75,7 @@ class DataTable extends React.Component{
 }
 
 
-DataTable.ptropTypes = {
+DataTable.propTypes = {
     heading: PropTypes.array,
     requestData: PropTypes.array,
     onDelete: PropTypes.func,
